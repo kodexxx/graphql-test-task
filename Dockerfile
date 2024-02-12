@@ -29,7 +29,7 @@ WORKDIR /usr/src/app
 
 RUN apk --no-cache add curl
 
-HEALTHCHECK CMD curl --fail http://localhost:5000/health || exit 1
+HEALTHCHECK CMD curl --fail http://localhost:5000/api/health || exit 1
 
 COPY package*.json ./
 COPY git-sha.* ./
