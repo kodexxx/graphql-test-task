@@ -19,6 +19,7 @@ import { ComplexityPlugin } from './common/plugins/complexity.plugin';
       buildSchemaOptions: { dateScalarMode: 'timestamp' },
       playground: true,
       introspection: true,
+      path: '/api/graphql',
     }),
     HealthModule,
     PrismaModule,
