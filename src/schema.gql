@@ -3,29 +3,29 @@
 # ------------------------------------------------------
 
 type Author {
-  id: String!
+  id: ID!
   firstName: String!
   lastName: String!
   books: [Book!]
 }
 
 type Book {
-  id: String!
+  id: ID!
   title: String!
   authors: [Author!]
 }
 
 type Query {
   getBooks(title: String): [Book!]!
-  getBook(id: String!): Book!
+  getBook(id: ID!): Book
   getAuthors(minNumberOfBooks: Float, maxNumberOfBooks: Float): [Author!]!
-  getAuthor(id: ID!): Author!
+  getAuthor(id: ID!): Author
 }
 
 type Mutation {
   createBook(book: CreateBookInput!): Book!
-  deleteBook(id: String!): Int!
-  addAuthor(bookId: String!, authorId: String!): Book!
+  deleteBook(id: ID!): Int!
+  addAuthor(bookId: ID!, authorId: ID!): Book!
   createAuthor(author: CreateAuthorInput!): Author!
   deleteAuthor(id: ID!): Int!
   deleteAuthorWithBooks(id: ID!): Int!

@@ -28,7 +28,7 @@ export class AuthorsResolver {
     return this.authorsService.findMany(data);
   }
 
-  @Query(() => Author)
+  @Query(() => Author, { nullable: true })
   async getAuthor(@Args() data?: UniqAuthorArgs) {
     return this.authorsService.findOne(data);
   }
@@ -51,7 +51,8 @@ export class AuthorsResolver {
   // todo: optimize it
   // When check logs of prisma, I find that prisma do optimization for queries,
   // https://www.prisma.io/docs/orm/prisma-client/queries/query-optimization-performance,
-  // it seems that there is no need to do anything to solve the n+1 problem
+  // it seems that there is no need to do anything to solve the n+1 problem,
+  // but in book resolver for demonstration i also implement with custom resolver!
   @ResolveField()
   async books(@Root() author: Author): Promise<Book[]> {
     // console.log(author)
