@@ -7,5 +7,6 @@ export class Author {
   id: string;
   firstName: string;
   lastName: string;
+  @Field({ complexity: 3 })
   books?: Book[];
 }

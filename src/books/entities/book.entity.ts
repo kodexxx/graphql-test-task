@@ -6,5 +6,6 @@ export class Book {
   @Field(() => ID)
   id: string;
   title: string;
+  @Field({ complexity: 3 })
   authors?: Author[];
 }

@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  newgmedia-test:
+    restart: always
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      DATABASE_URL: postgresql://newg:newg@db:5432/newg?schema=public
+      HOST: 0.0.0.0
+  db:
+    image: postgres:15.2-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=newg
+      - POSTGRES_PASSWORD=newg
+    ports:
+      - '6000:5432'
+    volumes:
+      - postgresql-data:/var/lib/postgresql/data
+volumes:
+  postgresql-data:
+    driver: local

@@ -4,15 +4,15 @@
 
 type Author {
   id: ID!
+  books: [Book!]
   firstName: String!
   lastName: String!
-  books: [Book!]
 }
 
 type Book {
   id: ID!
-  title: String!
   authors: [Author!]
+  title: String!
 }
 
 type Query {

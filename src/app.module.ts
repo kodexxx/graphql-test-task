@@ -7,6 +7,8 @@ import { AuthorsModule } from './authors/authors.module';
 import { PrismaModule } from './common/modules/prisma/prisma.module';
 import { ConfigModule } from '@common/config';
 import { ConfigSchema } from './config/config.schema';
+import { HealthModule } from './health/health.module';
+import { ComplexityPlugin } from './common/plugins/complexity.plugin';
 
 @Module({
   imports: [
@@ -15,11 +17,15 @@ import { ConfigSchema } from './config/config.schema';
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       buildSchemaOptions: { dateScalarMode: 'timestamp' },
+      playground: true,
+      introspection: true,
     }),
+    HealthModule,
     PrismaModule,
     BooksModule,
     AuthorsModule,
     PrismaModule,
   ],
+  providers: [ComplexityPlugin],
 })
 export class AppModule {}
