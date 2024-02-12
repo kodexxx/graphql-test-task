@@ -1,11 +1,15 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
+import { ConfigService } from '@common/config';
+import { ConfigSchema } from '../../../config/config.schema';
 
 @Injectable()
 export class PrismaService extends PrismaClient implements OnModuleInit {
-  constructor() {
+  constructor(private readonly configService: ConfigService<ConfigSchema>) {
     super({
-      log: ['query', 'warn', 'info'],
+      ...(configService.get('PRISMA_DEBUG_LOGS')
+        ? { log: ['query', 'info', 'warn', 'error'] }
+        : {}),
     });
   }
   async onModuleInit() {
