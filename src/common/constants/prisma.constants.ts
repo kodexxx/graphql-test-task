@@ -1,0 +1,1 @@
+export const PRISMA_NOT_FOUND_ERROR_CODE = 'P2025';
