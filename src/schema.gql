@@ -19,13 +19,21 @@ type Query {
   getBooks(title: String): [Book!]!
   getBook(id: String!): Book!
   getAuthors(minNumberOfBooks: Float, maxNumberOfBooks: Float): [Author!]!
-  getAuthor(id: String!): Author!
+  getAuthor(id: ID!): Author!
 }
 
 type Mutation {
+  createBook(book: CreateBookInput!): Book!
+  deleteBook(id: String!): Int!
+  addAuthor(bookId: String!, authorId: String!): Book!
   createAuthor(author: CreateAuthorInput!): Author!
-  deleteAuthor(id: String!): Int!
-  deleteAuthorWithBooks(id: String!): Int!
+  deleteAuthor(id: ID!): Int!
+  deleteAuthorWithBooks(id: ID!): Int!
+}
+
+input CreateBookInput {
+  title: String!
+  authorIds: [String!]!
 }
 
 input CreateAuthorInput {

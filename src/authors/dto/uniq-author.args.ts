@@ -1,7 +1,7 @@
-import { ArgsType, InputType } from '@nestjs/graphql';
+import { ArgsType, Field, ID } from '@nestjs/graphql';
 
-@InputType()
 @ArgsType()
 export class UniqAuthorArgs {
+  @Field(() => ID)
   id: string;
 }

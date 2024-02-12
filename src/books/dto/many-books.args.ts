@@ -1,6 +1,5 @@
-import { ArgsType, InputType } from '@nestjs/graphql';
+import { ArgsType } from '@nestjs/graphql';
 
-@InputType()
 @ArgsType()
 export class ManyBooksArgs {
   title?: string;

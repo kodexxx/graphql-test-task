@@ -25,7 +25,7 @@ export class AuthorsResolver {
   @Query(() => [Author])
   async getAuthors(@Args() data?: AuthorsManyArgs) {
     console.log(data);
-    return this.authorsService.findMany();
+    return this.authorsService.findMany(data);
   }
 
   @Query(() => Author)
